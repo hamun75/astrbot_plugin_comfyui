@@ -5,10 +5,18 @@
     "hint": "Host and port of your ComfyUI instance. Use the LAN IP if ComfyUI runs in a different container/host than AstrBot — 127.0.0.1 will point at AstrBot itself, not ComfyUI.",
     "default": "127.0.0.1:8188"
   },
-  "workflow_file": {
-    "description": "Workflow filename",
+  "workflow_json": {
+    "description": "Workflow JSON (paste directly here)",
     "type": "string",
-    "hint": "The API-format JSON file (from ComfyUI's 'Save (API Format)') placed in this plugin's workflow/ folder.",
+    "hint": "Paste the full contents of your exported workflow here (ComfyUI: File → Export Workflow (API), then open the .json file in a text editor and copy everything). This is the recommended way to set your workflow — no file upload or plugin re-zip needed, just paste and Save. Leave this blank to use the file-based method below instead (workflow_file).",
+    "editor_mode": true,
+    "editor_language": "json",
+    "default": ""
+  },
+  "workflow_file": {
+    "description": "Workflow filename (fallback, file-based method)",
+    "type": "string",
+    "hint": "Only used if workflow_json above is left blank. The API-format JSON file placed in this plugin's workflow/ folder.",
     "default": "workflow_api.json"
   },
   "positive_prompt_node_id": {
@@ -46,5 +54,59 @@
     "type": "int",
     "hint": "How long to wait for ComfyUI to finish before giving up.",
     "default": 120
+  },
+  "img2img_workflow_json": {
+    "description": "Image-to-Image Workflow JSON (paste directly here)",
+    "type": "string",
+    "hint": "Optional. Paste a separate workflow exported from ComfyUI that starts from LoadImage + VAEEncode instead of EmptyLatentImage. Leave blank to disable image-to-image (attached images will be ignored and treated as text-to-image). See README for how to build this workflow.",
+    "editor_mode": true,
+    "editor_language": "json",
+    "default": ""
+  },
+  "img2img_workflow_file": {
+    "description": "Image-to-image workflow filename (fallback, file-based method)",
+    "type": "string",
+    "hint": "Only used if img2img_workflow_json above is left blank.",
+    "default": ""
+  },
+  "img2img_load_image_node_id": {
+    "description": "Image-to-image: Load Image node ID",
+    "type": "string",
+    "hint": "The node ID of the LoadImage node that receives the uploaded photo. Required for image-to-image to work.",
+    "default": ""
+  },
+  "img2img_positive_prompt_node_id": {
+    "description": "Image-to-image: Positive prompt node ID",
+    "type": "string",
+    "hint": "May differ from the text-to-image workflow's node IDs — check in ComfyUI developer mode.",
+    "default": ""
+  },
+  "img2img_negative_prompt_node_id": {
+    "description": "Image-to-image: Negative prompt node ID (optional)",
+    "type": "string",
+    "default": ""
+  },
+  "img2img_output_node_id": {
+    "description": "Image-to-image: Output node ID",
+    "type": "string",
+    "default": ""
+  },
+  "img2img_seed_node_id": {
+    "description": "Image-to-image: Seed node ID (optional)",
+    "type": "string",
+    "hint": "Leave blank to auto-detect.",
+    "default": ""
+  },
+  "img2img_denoise_node_id": {
+    "description": "Image-to-image: Denoise node ID (optional)",
+    "type": "string",
+    "hint": "Leave blank to auto-detect (usually the same sampler node as the seed).",
+    "default": ""
+  },
+  "default_denoise": {
+    "description": "Default denoise strength",
+    "type": "float",
+    "hint": "How much the image is allowed to change from the original. Lower (e.g. 0.3) stays close to the source image; higher (e.g. 0.8) allows major changes. Typical range: 0.4-0.75.",
+    "default": 0.6
   }
 }
