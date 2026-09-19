@@ -30,10 +30,14 @@ scanning, or sensitive-word filtering.
 ## Setting up your workflow
 
 1. In ComfyUI, open the workflow you want AstrBot to use.
-2. Menu action **Save (API Format)** → export as `.json`.
+2. **File → Export Workflow (API)** → saves as a `.json` file.
+   (Older ComfyUI versions called this "Save (API Format)" and required
+   developer mode to be enabled first — current versions don't require
+   that for the export itself.)
 3. Place that file in this plugin's `workflow/` folder.
-4. Enable ComfyUI's **developer mode** — node IDs will show above each
-   node's title.
+4. Enable ComfyUI's **developer mode** (gear icon next to "Queue Size" →
+   "Enable Dev mode Options") — this is a separate setting needed so
+   node IDs display above each node's title, for step 5 below.
 5. In the AstrBot dashboard, open this plugin's settings and fill in:
    - `server_address` — your ComfyUI host and port, e.g. `192.168.1.15:8188`.
      **Important:** if AstrBot and ComfyUI run in separate Docker
