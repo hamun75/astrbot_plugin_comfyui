@@ -22,10 +22,28 @@ scanning, or sensitive-word filtering.
 
 ## Installation
 
-1. Copy this folder into AstrBot's plugin directory (or install it as
-   a plugin from your GitHub repo once published, via AstrBot's
-   Extensions tab).
-2. Reload plugins in the AstrBot dashboard.
+**Option A — upload the zip via the AstrBot dashboard (simplest):**
+
+1. After exporting your workflow (see below), make sure your `.json`
+   file is inside this plugin's `workflow/` folder *before* zipping.
+2. Zip the whole `astrbot_plugin_comfyui_bridge` folder. On Windows:
+   right-click the folder → **Send to → Compressed (zipped) folder**.
+   Make sure `main.py` etc. end up at the **top level inside the zip**
+   — not nested one level deeper (e.g. avoid the zip containing
+   `astrbot_plugin_comfyui_bridge/astrbot_plugin_comfyui_bridge/main.py`,
+   which can happen depending on how the files were selected before
+   compressing).
+3. In the AstrBot dashboard, go to **Extensions** → look for an
+   Install/Upload option that takes a local `.zip` (as opposed to
+   installing from the marketplace by name).
+4. Upload, then **reload plugins** so AstrBot picks it up.
+
+**Option B — copy the folder directly onto the server:**
+
+Copy this folder into AstrBot's plugin directory yourself (e.g. via
+`scp` onto `qwen`, or directly if AstrBot runs on the same machine you're
+editing on), then reload plugins in the dashboard. Same end result as
+Option A — pick whichever is easier given how you access the server.
 
 ## Setting up your workflow
 
