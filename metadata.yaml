@@ -1,0 +1,5 @@
+name: astrbot_plugin_comfyui_bridge
+desc: Bridges AstrBot to a self-hosted ComfyUI instance for text-to-image generation, using a workflow you export yourself. No assumptions about specific models, checkpoints, or LoRAs.
+version: 1.0.0
+author: Melbit Services
+repo: https://github.com/melbit-services/astrbot_plugin_comfyui_bridge

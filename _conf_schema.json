@@ -1,0 +1,50 @@
+{
+  "server_address": {
+    "description": "ComfyUI server address",
+    "type": "string",
+    "hint": "Host and port of your ComfyUI instance. Use the LAN IP if ComfyUI runs in a different container/host than AstrBot — 127.0.0.1 will point at AstrBot itself, not ComfyUI.",
+    "default": "127.0.0.1:8188"
+  },
+  "workflow_file": {
+    "description": "Workflow filename",
+    "type": "string",
+    "hint": "The API-format JSON file (from ComfyUI's 'Save (API Format)') placed in this plugin's workflow/ folder.",
+    "default": "workflow_api.json"
+  },
+  "positive_prompt_node_id": {
+    "description": "Positive prompt node ID",
+    "type": "string",
+    "hint": "The node ID of your CLIP Text Encode (or equivalent) node that receives the positive prompt. Find it in ComfyUI with developer mode enabled — the ID is shown above the node title.",
+    "default": "6"
+  },
+  "negative_prompt_node_id": {
+    "description": "Negative prompt node ID (optional)",
+    "type": "string",
+    "hint": "Leave blank if your workflow has no negative prompt node.",
+    "default": ""
+  },
+  "output_node_id": {
+    "description": "Output node ID",
+    "type": "string",
+    "hint": "The node ID of your Save Image / Preview Image node.",
+    "default": "9"
+  },
+  "seed_node_id": {
+    "description": "Seed node ID (optional)",
+    "type": "string",
+    "hint": "Leave blank to auto-detect a node with a 'seed' or 'noise_seed' input and randomize it. Set explicitly only if auto-detection picks the wrong node.",
+    "default": ""
+  },
+  "default_negative_prompt": {
+    "description": "Default negative prompt",
+    "type": "string",
+    "hint": "Used when negative_prompt_node_id is set and no negative prompt is given.",
+    "default": ""
+  },
+  "poll_timeout_seconds": {
+    "description": "Generation timeout (seconds)",
+    "type": "int",
+    "hint": "How long to wait for ComfyUI to finish before giving up.",
+    "default": 120
+  }
+}
